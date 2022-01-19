@@ -16,10 +16,8 @@ Vue.createApp({
             const url = `${this.apiUrl}/api/${this.apiPath}/products/all`;
             axios.get(url)
             //成功結果
-            .then(res =>{
-                console.log(res.data.products);
+            .then(res =>{  
                 this.products = res.data.products;
-                console.log(this.products);
             })  
             //失敗結果
             .catch((error)=>{
