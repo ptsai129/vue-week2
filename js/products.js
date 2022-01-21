@@ -13,7 +13,7 @@ Vue.createApp({
     methods:{
         //取得產品資料
         getData(){
-            const url = `${this.apiUrl}/api/${this.apiPath}/admin/products`;
+            const url = `${this.apiUrl}/api/${this.apiPath}/admin/products?page=1&category=%E9%A3%BE%E5%93%81`;
 
             axios.get(url)
             //成功結果
