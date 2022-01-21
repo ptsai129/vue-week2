@@ -18,34 +18,18 @@ Vue.createApp({
             .then((res)=>{
           
               const { token , expired} = res.data; 
-              console.log(token , expired);
-             
+            
               //把token跟expired存在cookie 存在myToken這個名稱 expired是unix格式是要用new Date轉格式
               document.cookie = `myToken=${token}; expires=${new Date(expired)}; path=/`;
-                //把token夾帶到headers內
-                axios.defaults.headers.common['Authorization'] = token; 
               //跳轉到產品列表頁面
-              window.location = 'products.html';
+               window.location = 'products.html';
             })
             //失敗結果
             .catch((error)=>{
-              console.dir(error);
+              console.dir(error.data.message);
             })
 
         },
-        //檢查登入是否成功
-        checkSignIn(params){
-            axios.post(`${this.apiUrl}/api/user/check`)
-            .then((res)=>{
-              console.log(res);
-              //取得 Token（Token 僅需要設定一次）
-              const token = document.cookie.replace(/(?:(?:^|.*;\s*)myToken\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-              
-               console.log(res.data);
-            }).catch((error)=>{
-              console.dir(error);
-            })
-        }
 
     },
     
